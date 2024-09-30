@@ -1,0 +1,200 @@
+/* BasicExample.css */
+
+/* Apply a global style to the body for a clean background and font */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Center the navigation bar */
+nav {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+/* Style the navigation list */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+/* Style each navigation item */
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+/* Style the links to look more elegant */
+nav ul li a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 600;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for links */
+nav ul li a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Add some padding to space content */
+.container {
+  padding: 30px;
+}
+
+/* Make the button in your forms and cards more elegant */
+button {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Add some extra spacing and smooth transition for content sections */
+.section {
+  margin: 20px 0;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+.section:hover {
+  transform: translateY(-5px);
+  opacity: 0.95;
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 600px) {
+  nav ul li {
+      display: block;
+      margin: 10px 0;
+  }
+
+  nav ul {
+      display: block;
+      padding-left: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+form div {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+  font-size: 1rem;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #fda085;
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(253, 160, 133, 0.3);
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #fda085 0%, #f6d365 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+button:focus {
+  outline: none;
+}
+
+p {
+  text-align: center;
+  color: #e74c3c;
+  font-size: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
