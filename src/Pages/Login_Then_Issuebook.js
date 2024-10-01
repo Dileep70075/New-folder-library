@@ -89,14 +89,12 @@ const Login_Then_Issuebook = () => {
                                 margin: '5px',
                                 border: '1px solid #ddd',
                                 borderRadius: '8px',
-                                // alignItems: "center"
                             }}
                         >
                             <h5>Book Name: {book.bookName}</h5>
                             <p1>Category: {book.category}</p1>
                             <p1>Rent per Day: {book.rentPerDay}</p1>
                         </div>
-
                          {book.bookissues ? (
                             //   <button onClick={() => handleReturnBook(book._id)} style={{ marginLeft: '10px' }}>
                             //     Return Book
