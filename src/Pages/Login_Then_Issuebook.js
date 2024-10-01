@@ -116,14 +116,10 @@ const Login_Then_Issuebook = () => {
                             <button > Issued</button>
                         ) : book.bookreturns === book ? (
                             <button > Returned</button>
-                        ) : null} 
-                        
-
-                       
+                        ) : null}   
                     </div>
                 ))}
             </ul>
-
         </div>
     );
 };
