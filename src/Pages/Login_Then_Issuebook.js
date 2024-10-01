@@ -111,7 +111,6 @@ const Login_Then_Issuebook = () => {
                         ) : (
                             <button onClick={() => handleReturnBook(book._id)} style={{borderRadius:'20px',height:'40px',width:'100px',marginTop:'20px'}}>Return </button>
                         )}
-                       
                         {book.bookissues || book.bookreturns === book ? (
                             <button > Issued</button>
                         ) : book.bookreturns === book ? (
@@ -123,5 +122,4 @@ const Login_Then_Issuebook = () => {
         </div>
     );
 };
-
 export default Login_Then_Issuebook;
