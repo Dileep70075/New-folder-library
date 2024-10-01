@@ -8,7 +8,15 @@ router.post('/register', userController.registerUser);
 router.post('/login', userController.loginUser);      
 router.get('/allUser',  userController.getUserProfile); 
 router.post('/issued',Authmiddleware, issuedController.issueBook); 
+router.get('/getIssueBook',Authmiddleware, issuedController.getIssueBook); 
 router.post('/returned',Authmiddleware, returnedController.returnBook); 
 router.get('/heldBook', returnedController.heldBook); 
 router.get('/getUserBookStatus',Authmiddleware, returnedController.getUserBookStatus);
+
+
+
+
+router.get('/getOneUserProfile', userController.getOneUserProfile); 
+router.put('/updateUser', userController.updateUser); 
+router.delete('/deleteUser', userController.deleteUser);
 module.exports = router;

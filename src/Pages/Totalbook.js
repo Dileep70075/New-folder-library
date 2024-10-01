@@ -29,13 +29,16 @@ const Totalbook = () => {
          {books.map((book) => (
     <div
       key={book._id}
-      style={{
-        padding: '10px',
-        border: '1px solid #ddd',
-        borderRadius: '8px',
-      }}
     >
-      <div>
+      <div style={{
+                width: '23%',
+                height: 'auto',
+                padding: '10px',
+                margin: '5px',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                alignItems: "center"
+              }}>
         <h5>Book Name : {book.bookName}</h5>
         <p1>Category : {book.category}</p1><br/>
         <p1>Rent per Day : {book.rentPerDay}</p1>

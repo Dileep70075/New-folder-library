@@ -50,3 +50,57 @@ exports.getUserProfile = async (req, res) => {
         res.status(500).json({ message: 'Error retrieving user profile', error });
     }
 };
+exports.getOneUserProfile = async (req, res) => {
+    try {
+        const { userId } = req.query; 
+        if(!userId){
+            return res.status(404).json({ message: 'User id not found' });
+        }
+        const user = await User.findById(userId);
+        if (!user) {
+            res.status(200).json({ message: 'User not matched',success:false});
+        } 
+        res.status(200).json({ message: 'User profile retrieved successfully',success:true,data:user});
+    } catch (error) {
+        res.status(500).json({ message: 'Error retrieving user profile', error });
+    }
+};
+
+exports.deleteUser = async (req, res,next) => {
+    try {
+        if(!req.query.id){
+            return res.status(404).json({ message: 'User id not found' });
+        }
+        const user = await User.findByIdAndDelete(req.query.id);
+        if (user) {
+             res.status(200).json({ message: 'User deleted successfully',success:true });
+        } 
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting user', error });
+    }
+};
+
+exports.updateUser = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const { name, email, password } = req.body;
+
+        const hashedPassword = password ? await bcrypt.hash(password, 10) : undefined;
+        const updatedFields = { name, email };
+        if (hashedPassword) updatedFields.password = hashedPassword;
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            { $set: updatedFields },
+            { new: true, runValidators: true } // `new: true` returns the updated document
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json({ message: 'User updated successfully', data: updatedUser });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating user', error });
+    }
+};

@@ -47,7 +47,7 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" style={{borderRadius:'20px'}}  >Login</button>
       </form>
     </div>
   );

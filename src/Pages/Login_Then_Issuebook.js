@@ -29,9 +29,9 @@ const Login_Then_Issuebook = () => {
     useEffect(() => {
         const userToken = localStorage.getItem('userToken')
         if (!userToken) {
-          navigate('/login_Then_Issuebook')
+            navigate('/login_Then_Issuebook')
         }
-      }, [navigate])
+    }, [navigate])
 
     const handleIssueBook = async (bookId) => {
         try {
@@ -63,56 +63,63 @@ const Login_Then_Issuebook = () => {
             setMessage(error.response?.data?.message || 'Error returning book');
         }
     };
-    
-const Logout = async() =>{
-    localStorage.removeItem('userData');
-    localStorage.removeItem('userToken');
-    navigate('/');
-}
+
+    const Logout = async () => {
+        localStorage.removeItem('userData');
+        localStorage.removeItem('userToken');
+        navigate('/');
+    }
     return (
         <div>
             <Dashbord />
             <h2>Issue or Return Book</h2>
-               <button onClick={Logout} style={{height:'40px',width:'100px',color:'black'}}>Logout</button>
-            <br/>
+            <button onClick={Logout} style={{ height: '40px', width: '100px', color: 'black' }}>Logout</button>
+            <br />
             {message && <p>{message}</p>}
             <ul>
                 {books.map((book) => (
-                    <div
+                    <div style={{ display: 'flex' }}
                         key={book._id}
-                        style={{
-                            padding: '10px',
-                            border: '1px solid #ddd',
-                            borderRadius: '8px',
-                            marginBottom: '10px',
-                        }}
                     >
-                        <div>
+                        <div
+                            style={{
+                                width: '23%',
+                                height: 'auto',
+                                padding: '10px',
+                                margin: '5px',
+                                border: '1px solid #ddd',
+                                borderRadius: '8px',
+                                // alignItems: "center"
+                            }}
+                        >
                             <h5>Book Name: {book.bookName}</h5>
-                            <p>Category: {book.category}</p>
-                            <p>Rent per Day: {book.rentPerDay}</p>
+                            <p1>Category: {book.category}</p1>
+                            <p1>Rent per Day: {book.rentPerDay}</p1>
                         </div>
-                        {book.bookissues ? (
+
+                         {book.bookissues ? (
                             //   <button onClick={() => handleReturnBook(book._id)} style={{ marginLeft: '10px' }}>
                             //     Return Book
                             //   </button>
                             <></>
                         ) : (
-                            <button onClick={() => handleIssueBook(book._id)} >Issue Book</button>
+                            <button onClick={() => handleIssueBook(book._id)} style={{borderRadius:'20px', height:'40px',width:'100px',marginTop:'20px'}}>Issue </button>
                         )}
 
                         {book.bookreturns ? (
                             <></>
                         ) : (
-                            <button onClick={() => handleReturnBook(book._id)}>Return Book</button>
+                            <button onClick={() => handleReturnBook(book._id)} style={{borderRadius:'20px',height:'40px',width:'100px',marginTop:'20px'}}>Return </button>
                         )}
-                        {/* Additional checks to show current status */}
+                       
                         {book.bookissues || book.bookreturns === book ? (
-                            <p style={{ color: 'orange' }}>Already Issued</p>
+                            <button > Issued</button>
                         ) : book.bookreturns === book ? (
-                            <p style={{ color: 'green' }}>Already Returned</p>
-                        ) : null}
+                            <button > Returned</button>
+                        ) : null} 
+                        
 
+                       
                     </div>
                 ))}
             </ul>

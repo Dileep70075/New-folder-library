@@ -58,7 +58,7 @@ const navigate = useNavigate()
                         required
                     />
                 </div>
-                <button type="submit">Register</button>
+                <button type="submit" style={{borderRadius:'40px'}}>Register</button>
             </form>
         </div>
     );

@@ -31,3 +31,16 @@ exports.issueBook = async (req, res,next) => {
     res.status(500).json({ message: error.message ? error.message : error});
   }
 };
+exports.getIssueBook = async (req, res) => {
+  try {
+      if(!req.user._id){
+        return res.status(400).json({ message: 'not match id' });
+      }
+      const user = await BookIssue.find({} );
+      if (user) {
+         res.status(200).json({ message: 'all Book issued successfully',success:true,data:user});
+      } 
+  } catch (error) {
+      res.status(500).json({ message: error.message ? error.message : error});
+  }
+};

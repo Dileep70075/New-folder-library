@@ -54,20 +54,20 @@ nav ul li a:hover {
 
 /* Make the button in your forms and cards more elegant */
 button {
-  background-color: #007bff;
-  border: none;
-  padding: 10px 20px;
-  color: white;
+  /* background-color: #007bff; */
+  /* border: none; */
+  /* padding: 10px 20px; */
+  /* color: white; */
+  /* background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); */
   font-size: 16px;
-  border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 /* Button hover effect */
-button:hover {
+/* button:hover {
   background-color: #0056b3;
-}
+} */
 
 /* Add some extra spacing and smooth transition for content sections */
 .section {
@@ -153,9 +153,9 @@ input:focus {
   box-shadow: 0 5px 15px rgba(253, 160, 133, 0.3);
 }
 
-button {
-  width: 100%;
-  padding: 12px;
+/* button {
+   width: 10%; */
+  /* padding: 12px; 
   background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
   border: none;
   border-radius: 8px;
@@ -163,18 +163,20 @@ button {
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
+   transition: background 0.3s ease, transform 0.3s ease; 
+} */
 
 button:hover {
-  background: linear-gradient(135deg, #fda085 0%, #f6d365 100%);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  /* background: linear-gradient(135deg, #fda085 0%, #f6d365 100%); */
+  transform: translateY(-1px);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); */
+  color: #424345;
+  /* border-radius: 40px; */
 }
 
-button:focus {
+/* button:focus {
   outline: none;
-}
+} */
 
 p {
   text-align: center;
@@ -182,7 +184,10 @@ p {
   font-size: 1rem;
 }
 
-
+.btn{
+  border-radius: 40px;
+  margin: 400px;
+}
 
 
 
