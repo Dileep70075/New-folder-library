@@ -29,7 +29,7 @@ const Login_Then_Issuebook = () => {
     useEffect(() => {
         const userToken = localStorage.getItem('userToken')
         if (!userToken) {
-            navigate('/login_Then_Issuebook')
+            navigate('/login')
         }
     }, [navigate])
 
@@ -95,25 +95,25 @@ const Login_Then_Issuebook = () => {
                             <p1>Category: {book.category}</p1>
                             <p1>Rent per Day: {book.rentPerDay}</p1>
                         </div>
-                         {book.bookissues ? (
+                        {book.bookissues ? (
                             //   <button onClick={() => handleReturnBook(book._id)} style={{ marginLeft: '10px' }}>
                             //     Return Book
                             //   </button>
                             <></>
                         ) : (
-                            <button onClick={() => handleIssueBook(book._id)} style={{borderRadius:'20px', height:'40px',width:'100px',marginTop:'20px'}}>Issue </button>
+                            <button onClick={() => handleIssueBook(book._id)} style={{ borderRadius: '20px', height: '40px', width: '100px', marginTop: '20px' }}>Issue </button>
                         )}
 
                         {book.bookreturns ? (
                             <></>
                         ) : (
-                            <button onClick={() => handleReturnBook(book._id)} style={{borderRadius:'20px',height:'40px',width:'100px',marginTop:'20px'}}>Return </button>
+                            <button onClick={() => handleReturnBook(book._id)} style={{ borderRadius: '20px', height: '40px', width: '100px', marginTop: '20px' }}>Return </button>
                         )}
                         {book.bookissues || book.bookreturns === book ? (
                             <button > Issued</button>
                         ) : book.bookreturns === book ? (
                             <button > Returned</button>
-                        ) : null}   
+                        ) : null}
                     </div>
                 ))}
             </ul>
