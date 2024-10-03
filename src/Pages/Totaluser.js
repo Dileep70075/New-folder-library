@@ -18,20 +18,20 @@ const Totaluser = () => {
     };
     fetchUsers();
   }, []);
-const handleDelete = async(id) =>{
-try{
-  const response = await axios.delete('http://localhost:3001/users/deleteUser', 
-    { params: {id: id}});
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete('http://localhost:3001/users/deleteUser',
+        { params: { id: id } });
 
-if(response.success){
-  setUsers(users.filter((deleteUser)=>deleteUser._id !== id))
-  navigate('/totaluser')
-}
-}
-catch (error) {
-  setMessage(error.response?.data?.message || 'delete user error');
-}
-}
+      if (response.success) {
+        setUsers(users.filter((deleteUser) => deleteUser._id !== id))
+        navigate('/totaluser')
+      }
+    }
+    catch (error) {
+      setMessage(error.response?.data?.message || 'delete user error');
+    }
+  }
   return (
     <div>
       <Dashbord />

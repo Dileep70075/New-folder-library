@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { json, useNavigate } from 'react-router-dom';
+import { json, Link, useNavigate } from 'react-router-dom';
 import Dashbord from './Dashbord'
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -25,8 +25,9 @@ const Login = () => {
   return (
     <div>
       <Dashbord/>
+      {/* <button style={{borderRadius:'20px', marginTop:'280px',position:'absolute'}}  >update</button> */}
       <h2>User Login</h2>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} >
         <div>
           <label>Email:</label>
           <input
@@ -45,8 +46,10 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit" style={{borderRadius:'20px'}}  >Login</button>
+        <button type="submit" style={{borderRadius:'20px'}}  >Login</button> 
+        <Link style={{marginLeft:'150px'}}>Forgot password</Link>
       </form>
+      
     </div>
   );
 };
