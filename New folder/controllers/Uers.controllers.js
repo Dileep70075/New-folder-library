@@ -1,6 +1,9 @@
 const User = require('../models/User.models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const forgot = require('../models/ForgotPassword.model')
+const crypto = require('crypto')
+const nodemailer = require('nodemailer')
 exports.registerUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;
@@ -52,29 +55,29 @@ exports.getUserProfile = async (req, res) => {
 };
 exports.getOneUserProfile = async (req, res) => {
     try {
-        const { userId } = req.query; 
-        if(!userId){
+        const { userId } = req.query;
+        if (!userId) {
             return res.status(404).json({ message: 'User id not found' });
         }
         const user = await User.findById(userId);
         if (!user) {
-            res.status(200).json({ message: 'User not matched',success:false});
-        } 
-        res.status(200).json({ message: 'User profile retrieved successfully',success:true,data:user});
+            res.status(200).json({ message: 'User not matched', success: false });
+        }
+        res.status(200).json({ message: 'User profile retrieved successfully', success: true, data: user });
     } catch (error) {
         res.status(500).json({ message: 'Error retrieving user profile', error });
     }
 };
 
-exports.deleteUser = async (req, res,next) => {
+exports.deleteUser = async (req, res, next) => {
     try {
-        if(!req.query.id){
+        if (!req.query.id) {
             return res.status(404).json({ message: 'User id not found' });
         }
         const user = await User.findByIdAndDelete(req.query.id);
         if (user) {
-             res.status(200).json({ message: 'User deleted successfully',success:true });
-        } 
+            res.status(200).json({ message: 'User deleted successfully', success: true });
+        }
     } catch (error) {
         res.status(500).json({ message: 'Error deleting user', error });
     }
@@ -104,3 +107,56 @@ exports.updateUser = async (req, res) => {
         res.status(500).json({ message: 'Error updating user', error });
     }
 };
+
+
+exports.forgotPassword = async (req, res, next) => {
+    try {
+        const { email } = req.body;
+        const Emaill = await User.findOne({  email })
+        if (!Emaill) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        const otp = crypto.randomInt(100000, 999999).toString();
+        const expiresAt = Date.now() + 10 * 60 * 1000;
+        const user = await forgot.findOne({ userId: email })
+        if (user) {
+            return res.status(404).json({ message: 'already send otp' });
+        }
+        const detail = await forgot.create({
+            userId: email,
+            otp,
+            expiresAt
+        })
+        await detail.save();
+        res.status(200).json({ message: 'otp send successfully', detail: detail });
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message ? error.message : error });
+    }
+}
+
+
+exports.updatePassword = async (req, res, next) => {
+    try {
+        const { email, otp, newPassword } = req.body
+        const user = await forgot.findOne({ otp })
+        if (!user) {
+            return res.status(404).json({ message: 'not match otp' });
+        }
+        const userName = await User.findOne({ email })
+        if (!userName) {
+            return res.status(404).json({ message: 'not match email' });
+        }
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        userName.password = hashedPassword
+        await userName.save()
+        await forgot.deleteOne({ _id:user._id });
+        res.status(200).json({ message: 'change password successfully', userName: userName });
+
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message ? error.message : error });
+    }
+}
+
+

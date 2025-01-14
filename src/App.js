@@ -10,6 +10,8 @@ import Totalbook from './Pages/Totalbook';
 import Totaluser from './Pages/Totaluser';
 import Userheldbook from './Pages/Userheldbook';
 import Login_Then_Issuebook from './Pages/Login_Then_Issuebook';
+import ForgotPassword from './Pages/ForgotPassword';
+import UpdatePassword from './Pages/UpdatePassword';
 function App() {
   return (
     <Router>
@@ -24,6 +26,8 @@ function App() {
         <Route path='/totaluser' element={<Totaluser />} />
         <Route path='/userheldbook' element={<Userheldbook />} />
         <Route path='/login_Then_Issuebook' element={<Login_Then_Issuebook />} />
+        <Route path='/forgotPassword' element={<ForgotPassword />} />
+        <Route path='/updatePassword' element={<UpdatePassword />} />
       </Routes>
     </Router>
   )

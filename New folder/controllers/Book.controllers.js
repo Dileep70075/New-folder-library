@@ -21,6 +21,8 @@ exports.createBook = async (req, res,next) => {
     res.status(400).json({ message: error.message ? error.message: error });
   }
 };
+
+
 exports.getBooks = async (req, res,next) => {
   try {
     const books = await Book.find();
@@ -29,6 +31,8 @@ exports.getBooks = async (req, res,next) => {
     res.status(400).json({ message: error.message ? error.message: error });
   }
 };
+
+
 exports.getBookById = async (req, res,next) => {
   try {
     const book = await Book.findById(req.params.id);

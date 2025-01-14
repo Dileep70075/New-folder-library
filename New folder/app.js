@@ -15,6 +15,7 @@ const cors = require('cors');
 app.use(cors());
 const bodyParser = require('body-parser');
 const corsOptions = {
+  // origin: 'http://localhost:8081',
   origin: 'http://localhost:3000',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: ['Content-Type', 'Authorization'],

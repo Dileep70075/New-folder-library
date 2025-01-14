@@ -9,14 +9,14 @@ router.post('/login', userController.loginUser);
 router.get('/allUser',  userController.getUserProfile); 
 router.post('/issued',Authmiddleware, issuedController.issueBook); 
 router.get('/getIssueBook',Authmiddleware, issuedController.getIssueBook); 
-router.post('/returned',Authmiddleware, returnedController.returnBook); 
-router.get('/heldBook', returnedController.heldBook); 
+router.post('/returned',Authmiddleware, issuedController.returnBook);
+router.get('/getBooksStatus',Authmiddleware, issuedController.getBooksStatus);  
+router.get('/heldBook', issuedController.heldBook); 
 router.get('/getUserBookStatus',Authmiddleware, returnedController.getUserBookStatus);
-
-
-
-
+router.get('/bookDetailAndIssueAndReturn',Authmiddleware, issuedController.bookDetailAndIssueAndReturn); 
 router.get('/getOneUserProfile', userController.getOneUserProfile); 
 router.put('/updateUser', userController.updateUser); 
 router.delete('/deleteUser', userController.deleteUser);
+router.post('/forgotPassword', userController.forgotPassword); 
+router.put('/updatePassword', userController.updatePassword); 
 module.exports = router;
