@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const UpdatePassword = () => {
   const [email, setEmail] = useState('');
@@ -10,13 +11,7 @@ const UpdatePassword = () => {
   const [newPassword, setNewPassword] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
   const [error, setError] = useState('');
-
-
-
-
-
-
-
+  const navigate = useNavigate();
   const handleUpdatePassword = async (e) => {
     e.preventDefault();
     try {
@@ -39,6 +34,7 @@ const UpdatePassword = () => {
         icon: 'success',
         confirmButtonText: 'OK',
       });
+      navigate('/login');
     } catch (err) {
       // Handle errors
       if (err.response) {
